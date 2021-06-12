@@ -10,7 +10,7 @@ default:
     - gitlab-org
 
 variables:
-  - VENV_DIR: ${CI_PROJECT_DIR}/venv
+  - VENV_DIR: venv
 
 stages:
   - tests
