@@ -1,10 +1,10 @@
 image:
   name: hashicorp/terraform:latest
 
-default:
-  tags:
-    # To support custom gitlab runner
-    - k8s-deployments
+# default:
+#   tags:
+#     # To support custom gitlab runner
+#     - k8s-deployments
   
 
 stages:
