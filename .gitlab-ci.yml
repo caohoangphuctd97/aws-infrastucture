@@ -18,3 +18,4 @@ tests:
       - $VENV_DIR
   script:
     - echo "Hello Cao Hoang Phuc"
+    - terraform --version
