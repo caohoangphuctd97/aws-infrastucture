@@ -5,7 +5,9 @@ default:
   tags:
     # To support custom gitlab runner
     - gitlab-org
-  
+
+variables:
+  - VENV_DIR: $CI_PROJECT_DIR/venv
 
 stages:
   - tests
@@ -15,7 +17,7 @@ tests:
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
-      - $VENV_DIR
+      - 
   script:
     # - echo "Hello Cao Hoang Phuc"
     - terraform --version
