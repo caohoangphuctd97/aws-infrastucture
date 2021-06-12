@@ -1,5 +1,8 @@
-image:
-  name: hashicorp/terraform:latest
+image: docker:18.09
+
+services:
+  - docker:18.09-dind
+
 
 default:
   tags:
@@ -19,5 +22,5 @@ tests:
     paths:
       - 
   script:
-    # - echo "Hello Cao Hoang Phuc"
-    - terraform --version
+    - echo "Hello Cao Hoang Phuc"
+    # - terraform --version
