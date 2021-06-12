@@ -9,8 +9,8 @@ default:
     # To support custom gitlab runner
     - gitlab-org
 
-# variables:
-#   - VENV_DIR: $CI_PROJECT_DIR/venv
+variables:
+  - VENV_DIR: $CI_PROJECT_DIR/venv
 
 stages:
   - tests
