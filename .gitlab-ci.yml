@@ -17,4 +17,4 @@ tests:
     paths:
       - $VENV_DIR
   script:
-    -echo "Hello Cao Hoang Phuc"
+    - echo "Hello Cao Hoang Phuc"
