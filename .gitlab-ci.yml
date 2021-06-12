@@ -1,0 +1,20 @@
+image:
+  name: hashicorp/terraform:latest
+
+default:
+  tags:
+    # To support custom gitlab runner
+    - k8s-deployments
+  
+
+stages:
+  -tests
+
+test:
+  stage: tests
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - $VENV_DIR
+  script:
+    -echo "Hello Cao Hoang Phuc"
