@@ -10,7 +10,7 @@ default:
     - gitlab-org
 
 variables:
-  - VENV_DIR: venv
+  VENV_DIR: ${CI_PROJECT_DIR}/venv
 
 stages:
   - tests
@@ -19,6 +19,8 @@ tests:
   stage: tests
   cache:
     key: ${CI_COMMIT_REF_SLUG}
+    path:
+      - $VENV_DIR
 
   script:
     - echo "Hello Cao Hoang Phuc"
