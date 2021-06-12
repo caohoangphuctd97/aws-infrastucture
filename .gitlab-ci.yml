@@ -20,7 +20,7 @@ tests:
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
-      - 
+      - $VENV_DIR
   script:
     - echo "Hello Cao Hoang Phuc"
     # - terraform --version
