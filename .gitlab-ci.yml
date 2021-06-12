@@ -19,7 +19,7 @@ tests:
   stage: tests
   cache:
     key: ${CI_COMMIT_REF_SLUG}
-    path:
+    paths:
       - $VENV_DIR
 
   script:
