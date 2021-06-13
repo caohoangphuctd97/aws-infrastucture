@@ -30,8 +30,8 @@ working-plan:
   variables:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
-    ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}
-    USERNAME: gitlab-ci-token
-    PASSWORD: ${CI_JOB_TOKEN}
+    TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}
+    TF_USERNAME: gitlab-ci-token
+    TF_PASSWORD: ${CI_JOB_TOKEN}
   script:
     - make help && make tf_init
