@@ -8,7 +8,8 @@ variables:
 stages:
   - tests
   - working-plan
-
+before_script:
+  - cp /usr/local/src/Makefile $CI_PROJECT_DIR/Makefile
 tests:
   stage: tests
   cache:
@@ -32,4 +33,4 @@ working-plan:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
   script:
-    - make help && terraform plan
+    - make help && make tf_init
