@@ -1,13 +1,7 @@
-image: docker:18.09
+image: registry.gitlab.com/caohoangphuctd/aws-infrastucture/container-docker:latest
 
-services:
-  - docker:18.09-dind
-
-
-default:
-  tags:
-    # To support custom gitlab runner
-    - gitlab-org
+# services:
+#   - docker:18.09-dind
 
 variables:
   VENV_DIR: ${CI_PROJECT_DIR}/venv
@@ -24,4 +18,4 @@ tests:
 
   script:
     - echo "Hello Cao Hoang Phuc"
-    # - terraform --version
+    - terraform --version
