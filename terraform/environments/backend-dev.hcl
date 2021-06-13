@@ -1,4 +1,4 @@
-# address = "${ADDRESS}"
+address = "https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}"
 # lock_address = "${ADDRESS}/lock"
 # unlock_address = "${ADDRESS}/lock"
 # username = "${USERNAME}"
