@@ -4,12 +4,12 @@ terraform {
   }
 }
 
-data "terraform_remote_state" "example" {
-  backend = "http"
+# data "terraform_remote_state" "example" {
+#   backend = "http"
 
-  config = {
-    address = var.address
-    username = var.username
-    password = var.password
-  }
-}
+#   config = {
+#     address = var.address
+#     username = var.username
+#     password = var.password
+#   }
+# }
