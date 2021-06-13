@@ -19,6 +19,7 @@ tests:
   script:
     - echo "Hello Cao Hoang Phuc"
     - terraform --version
+    - ls
 
 working-plan:
   stage: working-plan
@@ -30,4 +31,4 @@ working-plan:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
   script:
-    - ls && tf_init && terraform plan
+    - make tf_init && terraform plan
