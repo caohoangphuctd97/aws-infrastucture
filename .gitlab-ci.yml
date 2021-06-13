@@ -2,9 +2,7 @@ image: registry.gitlab.com/caohoangphuctd/aws-infrastucture/container-docker:lat
 
 variables:
   VENV_DIR: ${CI_PROJECT_DIR}/venv
-  TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}
-  TF_USERNAME: gitlab-ci-token
-  TF_PASSWORD: ${CI_JOB_TOKEN}
+
 stages:
   - tests
   - working-plan
@@ -32,5 +30,8 @@ working-plan:
   variables:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
+    TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}
+    TF_USERNAME: gitlab-ci-token
+    TF_PASSWORD: ${CI_JOB_TOKEN}
   script:
     - make help && make tf_init
