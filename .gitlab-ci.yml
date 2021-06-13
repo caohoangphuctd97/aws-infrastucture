@@ -27,7 +27,7 @@ working-plan:
     paths:
       - $VENV_DIR
   variables:
-    TERRAFORM_DIR: terraform
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
+    TF_ROOT: terraform
   script:
-    - cd ${TERRAFORM_DIR} && tf_init && terraform plan
+    - tf_init && terraform plan
