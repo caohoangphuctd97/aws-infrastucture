@@ -1,13 +1,11 @@
 image: registry.gitlab.com/caohoangphuctd/aws-infrastucture/container-docker:latest
 
-# services:
-#   - docker:18.09-dind
-
 variables:
   VENV_DIR: ${CI_PROJECT_DIR}/venv
 
 stages:
   - tests
+  - working-plan
 
 tests:
   stage: tests
@@ -19,3 +17,14 @@ tests:
   script:
     - echo "Hello Cao Hoang Phuc"
     - terraform --version
+
+working-plan:
+  stage: working-plan
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - $VENV_DIR
+  variables:
+    TERRAFORM_DIR: terraform
+  script:
+    - cd ${TERRAFORM_DIR} && terraform init && terraform plan
