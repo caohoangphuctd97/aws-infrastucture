@@ -20,6 +20,7 @@ tests:
     - echo "Hello Cao Hoang Phuc"
     - terraform --version
     - ls
+    - make --help
 
 working-plan:
   stage: working-plan
