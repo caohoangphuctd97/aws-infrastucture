@@ -20,7 +20,7 @@ tests:
     - echo "Hello Cao Hoang Phuc"
     - terraform --version
     - ls
-    - make --help
+    - make help
 
 working-plan:
   stage: working-plan
@@ -32,4 +32,4 @@ working-plan:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
   script:
-    - make --help && terraform plan
+    - make help && terraform plan
