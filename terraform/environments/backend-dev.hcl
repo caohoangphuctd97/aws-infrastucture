@@ -1,4 +1,4 @@
-address = "${TF_ADDRESS}""
+address = "${TF_ADDRESS}"
 lock_address = "${TF_ADDRESS}/lock"
 unlock_address = "${TF_ADDRESS}/lock"
 username = "${TF_USERNAME}"
