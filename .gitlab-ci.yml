@@ -31,4 +31,4 @@ working-plan:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
   script:
-    - make tf_init && terraform plan
+    - make --help && terraform plan
