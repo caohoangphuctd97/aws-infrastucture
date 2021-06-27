@@ -20,7 +20,7 @@ tests:
     - terraform --version
     - ls
     - make help
-    - echo $AWS_ACCESS_KEY_ID
+    - echo ${AWS_ACCESS_KEY_ID}
     - echo ${CI_COMMIT_REF_SLUG}
 
 .prepare_dev_configs: &prepare_dev_configs
