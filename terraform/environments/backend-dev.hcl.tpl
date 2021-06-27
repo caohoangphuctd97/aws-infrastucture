@@ -1,0 +1,8 @@
+address="https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state" 
+lock_address="https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" 
+unlock_address="https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" 
+username="${GITLAB_USER_NAME}" 
+password="s3M9D8BiwmWFgCktCfxU" 
+lock_method="POST" 
+unlock_method="DELETE" 
+retry_wait_min="5"
