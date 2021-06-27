@@ -22,7 +22,7 @@ tests:
     - make help
 
 .prepare_dev_configs: &prepare_dev_configs
-  - envsubst < $TF_BACKEND_CONFIG.tpl > $TF_BACKEND_CONFIG
+  - envsubst < $TF_BACKEND_CONF_PATH.tpl > $TF_BACKEND_CONF_PATH
 
 working-plan:
   stage: working-plan
@@ -31,6 +31,7 @@ working-plan:
     paths:
       - $VENV_DIR
   variables:
+    TF_BACKEND_CONF_PATH: terraform/gcp/environments/dev/backend-dev.hcl
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
     
