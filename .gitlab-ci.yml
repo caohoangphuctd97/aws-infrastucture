@@ -21,7 +21,7 @@ tests:
     - ls
     - make help
     - echo $AWS_ACCESS_KEY_ID
-    - echo $AWS_SECRET_ACCESS_KEY
+    - echo ${CI_COMMIT_REF_SLUG}
 
 .prepare_dev_configs: &prepare_dev_configs
   - envsubst < $TF_BACKEND_CONF_PATH.tpl > $TF_BACKEND_CONF_PATH
