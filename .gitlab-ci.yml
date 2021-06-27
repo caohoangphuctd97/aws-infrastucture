@@ -34,7 +34,8 @@ working-plan:
     TF_BACKEND_CONF_PATH: terraform/environments/backend-dev.hcl
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
-    
+    TF_VARS_CONFIG: environments/dev.tfvars
   script:
     - *prepare_dev_configs
     - make tf_init
+    - make tf_create

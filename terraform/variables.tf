@@ -3,6 +3,6 @@ variable project_region {
     default = "ap-southeast-1"
 }
 
-variable address {}
-variable username {}
-variable password {}
+variable bucket {
+    type = string
+}
