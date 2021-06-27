@@ -1,0 +1,21 @@
+# POST http://54.169.35.52:8083/submit HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "sample phuc",
+#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
+
+# POST http://54.169.35.52:8083/relay HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "sample",
+#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
+
+GET http://54.169.35.52:8083/input_value HTTP/1.1
+
+GET http://54.169.35.52:8083/get_data HTTP/1.1
+
+GET http://54.169.35.52:8083/relay_state HTTP/1.1
