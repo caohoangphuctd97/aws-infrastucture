@@ -38,4 +38,5 @@ working-plan:
   script:
     - *prepare_dev_configs
     - make tf_init
-    - make tf_create
+    # - make tf_create
+    - make tf_create_new
