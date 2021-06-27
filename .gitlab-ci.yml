@@ -21,6 +21,9 @@ tests:
     - ls
     - make help
 
+.prepare_dev_configs: &prepare_dev_configs
+  - envsubst < $TF_BACKEND_CONFIG.tpl > $TF_BACKEND_CONFIG
+
 working-plan:
   stage: working-plan
   cache:
@@ -30,8 +33,6 @@ working-plan:
   variables:
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
     TF_ROOT: terraform
-    # TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_PROJECT_NAME}
-    # TF_USERNAME: gitlab-ci-token
-    # TF_PASSWORD: ${CI_JOB_TOKEN}
+    
   script:
     - make tf_init
