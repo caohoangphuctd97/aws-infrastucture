@@ -6,3 +6,7 @@ variable project_region {
 variable bucket {
     type = string
 }
+
+variable region {
+    type = string
+}
