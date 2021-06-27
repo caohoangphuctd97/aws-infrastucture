@@ -35,4 +35,5 @@ working-plan:
     TF_ROOT: terraform
     
   script:
+    - *prepare_dev_configs
     - make tf_init
