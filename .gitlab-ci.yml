@@ -20,8 +20,6 @@ tests:
     - terraform --version
     - ls
     - make help
-    - echo ${AWS_ACCESS_KEY_ID}
-    - echo ${CI_COMMIT_REF_SLUG}
 
 .prepare_dev_configs: &prepare_dev_configs
   - envsubst < $TF_BACKEND_CONF_PATH.tpl > $TF_BACKEND_CONF_PATH
@@ -39,7 +37,5 @@ working-plan:
     TF_VARS_CONFIG: environments/dev.tfvars
   script:
     - *prepare_dev_configs
-    - echo $AWS_ACCESS_KEY_ID
-    - echo $AWS_SECRET_ACCESS_KEY
     - make tf_init
     - make tf_create
