@@ -34,13 +34,4 @@ working-plan:
     # TF_USERNAME: gitlab-ci-token
     # TF_PASSWORD: ${CI_JOB_TOKEN}
   script:
-    - cd ${TF_ROOT} && terraform init \
-      -backend-config="address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state" \
-      -backend-config="lock_address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" \
-      -backend-config="unlock_address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" \
-      -backend-config="username=${GITLAB_USER_NAME}" \
-      -backend-config="password=s3M9D8BiwmWFgCktCfxU" \
-      -backend-config="lock_method=POST" \
-      -backend-config="unlock_method=DELETE" \
-      -backend-config="retry_wait_min=5"
-    - make help && make tf_init
+    - cd ${TF_ROOT} && terraform init -backend-config="address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state" -backend-config="lock_address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" -backend-config="unlock_address=https://gitlab.com/api/v4/projects/${CI_PROJECT_DIR}/terraform/state/state/lock" -backend-config="username=${GITLAB_USER_NAME}" -backend-config="password=s3M9D8BiwmWFgCktCfxU" -backend-config="lock_method=POST" -backend-config="unlock_method=DELETE" -backend-config="retry_wait_min=5"
