@@ -1,2 +1,2 @@
-bucket = "my-tf-test-bucket"
+bucket = "aws-infrastructure-data"
 region = "ap-southeast-1"
