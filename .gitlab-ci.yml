@@ -2,10 +2,13 @@ image: registry.gitlab.com/caohoangphuctd/aws-infrastucture/container-docker:lat
 
 variables:
   VENV_DIR: ${CI_PROJECT_DIR}/venv
+  ENV_DIR: ${CI_PROJECT_DIR}/terraform/environments
 
 stages:
   - tests
-  - working-plan
+  - working-apply
+  - working-destroy
+
 before_script:
   - cp /usr/local/src/Makefile $CI_PROJECT_DIR/Makefile
 tests:
@@ -24,12 +27,14 @@ tests:
 .prepare_dev_configs: &prepare_dev_configs
   - envsubst < $TF_BACKEND_CONF_PATH.tpl > $TF_BACKEND_CONF_PATH
 
-working-plan:
-  stage: working-plan
+working-apply:
+  stage: working-apply
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - $VENV_DIR
+      - $ENV_DIR
+    policy: push
   variables:
     TF_BACKEND_CONF_PATH: terraform/environments/backend-dev.hcl
     TF_BACKEND_CONFIG: environments/backend-dev.hcl
@@ -39,4 +44,20 @@ working-plan:
     - *prepare_dev_configs
     - make tf_init
     - make tf_create
-    # - make tf_create_new
+working-destroy:
+  stage: working-destroy
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - $VENV_DIR
+      - $ENV_DIR
+    policy: pull
+  variables:
+    TF_BACKEND_CONF_PATH: terraform/environments/backend-dev.hcl
+    TF_BACKEND_CONFIG: environments/backend-dev.hcl
+    TF_ROOT: terraform
+    TF_VARS_CONFIG: environments/dev.tfvars
+  script:
+    # - *prepare_dev_configs
+    - make tf_init
+    - make tf_destroy
