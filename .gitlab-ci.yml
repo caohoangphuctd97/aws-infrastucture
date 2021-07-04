@@ -44,6 +44,7 @@ working-apply:
     - *prepare_dev_configs
     - make tf_init
     - make tf_create
+
 working-destroy:
   stage: working-destroy
   cache:
@@ -58,6 +59,6 @@ working-destroy:
     TF_ROOT: terraform
     TF_VARS_CONFIG: environments/dev.tfvars
   script:
-    # - *prepare_dev_configs
     - make tf_init
     - make tf_destroy
+  when: manual

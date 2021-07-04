@@ -28,3 +28,13 @@ resource "aws_s3_bucket_public_access_block" "permission" {
   block_public_acls   = true
   block_public_policy = true
 }
+
+
+resource "aws_vpc" "prod-vpc" {
+  cidr_block = var.cidr_block
+  enable_dns_support = var.enable_dns_support #gives you an internal domain name
+  enable_dns_hostnames = var.enable_dns_hostnames #gives you an internal host name
+  enable_classiclink = var.enable_classiclink
+  instance_tenancy = var.instance_tenancy    
+  tags = var.tags
+}
