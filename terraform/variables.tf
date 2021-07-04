@@ -12,10 +12,10 @@ variable region {
 }
 
 variable tags {
-    type = object(
-        Name = string
+    type = object({
+        Name = string,
         Created_by = string
-    )
+    })
 }
 
 variable cidr_block {
