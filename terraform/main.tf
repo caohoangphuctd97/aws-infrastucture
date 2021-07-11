@@ -105,7 +105,7 @@ data "aws_ami_ids" "amazon_linux_2" {
 }
 
 resource "aws_instance" "web1" {
-    ami = data.aws_ami_ids.amazon_linux_2
+    ami = data.aws_ami_ids.amazon_linux_2.id
     instance_type = "t2.micro"
     # Subnet public
     subnet_id = aws_subnet.prod-subnet-public-1.id
