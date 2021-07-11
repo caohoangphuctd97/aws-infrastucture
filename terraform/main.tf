@@ -70,6 +70,31 @@ resource "aws_route_table_association" "prod-crta-public-subnet-1"{
   route_table_id = aws_route_table.prod-public-crt.id
 }
 
+resource "aws_security_group" "securi_group" {
+    vpc_id = aws_vpc.prod-vpc.id
+    
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = -1
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+      
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags = merge({"Name": "aws-infrastructure-sg"},var.tags)
+}
+
 data "aws_ami_ids" "amazon_linux_2" {
   owners = ["amazon"]
 
