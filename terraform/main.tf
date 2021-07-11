@@ -36,7 +36,7 @@ resource "aws_vpc" "prod-vpc" {
   enable_dns_hostnames = var.enable_dns_hostnames #gives you an internal host name
   enable_classiclink = var.enable_classiclink
   instance_tenancy = var.instance_tenancy    
-  tags = var.tags
+  tags = merge({"Name": "aws-infrastructure-vpc"},var.tags)
 }
 
 resource "aws_subnet" "prod-subnet-public-1" {
@@ -44,12 +44,12 @@ resource "aws_subnet" "prod-subnet-public-1" {
   cidr_block = var.cidr_public_subnet
   map_public_ip_on_launch = "true" //it makes this a public subnet
   availability_zone = var.availability_zone
-  tags = var.tags
+  tags = merge({"Name": "aws-infrastructure-public-subnet"},var.tags)
 }
 
 resource "aws_internet_gateway" "prod-igw" {
   vpc_id = aws_vpc.prod-vpc.id
-  tags = var.tags
+  tags = merge({"Name": "aws-infrastructure-gateway"},var.tags)
 }
 
 resource "aws_route_table" "prod-public-crt" {
@@ -62,7 +62,7 @@ resource "aws_route_table" "prod-public-crt" {
         gateway_id = "${aws_internet_gateway.prod-igw.id}" 
     }
     
-    tags = var.tags
+    tags = merge({"Name": "aws-infrastructure-RT"},var.tags)
 }
 
 data "aws_ami_ids" "amazon_linux_2" {
