@@ -15,3 +15,4 @@ tags = {
 
 # Subnet 
 cidr_public_subnet = "27.21.1.0/24"
+availability_zone = "ap-southeast-1a"
