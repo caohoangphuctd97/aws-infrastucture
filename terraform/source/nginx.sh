@@ -7,7 +7,7 @@ done
 
 # install nginx
 sudo yum -y update
-sudo yum -y install nginx
+sudo amazon-linux-extras install -y nginx1
 
 # make sure nginx is started
 sudo systemctl start nginx.service
