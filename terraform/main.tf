@@ -38,3 +38,16 @@ resource "aws_vpc" "prod-vpc" {
   instance_tenancy = var.instance_tenancy    
   tags = var.tags
 }
+
+resource "aws_subnet" "prod-subnet-public-1" {
+  vpc_id = aws_vpc.prod-vpc.id
+  cidr_block = var.cidr_public_subnet
+  map_public_ip_on_launch = "true" //it makes this a public subnet
+  availability_zone = var.region
+  tags = var.tags
+}
+
+resource "aws_vpn_gateway" "vpn_gw" {
+  vpc_id = aws_vpc.prod-vpc.id
+  tags = var.tags
+}

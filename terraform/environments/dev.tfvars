@@ -12,3 +12,6 @@ tags = {
     Name = "aws-infrastructure-vpc"
     Created_by = "PhucCao"
 }
+
+# Subnet 
+cidr_public_subnet = "27.21.1.0/24"
