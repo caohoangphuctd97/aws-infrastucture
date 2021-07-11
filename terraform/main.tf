@@ -113,7 +113,7 @@ resource "aws_instance" "web1" {
     provisioner "remote-exec" {
       inline = [
         "chmod +x /home/${var.ec2_user}/nginx.sh",
-        "sudo /home/${var.ec2_user}/nginx.sh"
+        "sudo sh /home/${var.ec2_user}/nginx.sh"
       ]
     }
     connection {
