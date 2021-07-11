@@ -13,7 +13,7 @@ variable region {
 
 variable tags {
     type = object({
-        Name = string,
+        Name_project = string,
         Created_by = string
     })
 }
