@@ -16,3 +16,8 @@ tags = {
 # Subnet 
 cidr_public_subnet = "27.21.1.0/24"
 availability_zone = "ap-southeast-1a"
+
+# Key pair
+PUBLIC_KEY_PATH = "asset/aws-infrastructure-key.pub"
+PRIVATE_KEY_PATH = "asset/aws-infrastructure-key"
+ec2_user = "ec2-user"

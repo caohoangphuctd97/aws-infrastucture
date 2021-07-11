@@ -47,3 +47,16 @@ variable cidr_public_subnet {
 variable availability_zone {
     type = string
 }
+
+// EC2 //
+variable PRIVATE_KEY_PATH {
+    type = string
+}
+
+variable PUBLIC_KEY_PATH {
+    type = string
+}
+
+variable ec2_user {
+    type = string
+}

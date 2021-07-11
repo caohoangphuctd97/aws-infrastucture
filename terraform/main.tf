@@ -70,7 +70,7 @@ resource "aws_route_table_association" "prod-crta-public-subnet-1"{
   route_table_id = aws_route_table.prod-public-crt.id
 }
 
-resource "aws_security_group" "securi_group" {
+resource "aws_security_group" "security_group" {
     vpc_id = aws_vpc.prod-vpc.id
     
     egress {
@@ -104,3 +104,34 @@ data "aws_ami_ids" "amazon_linux_2" {
   }
 }
 
+resource "aws_instance" "web1" {
+    ami = data.aws_ami_ids.amazon_linux_2
+    instance_type = "t2.micro"
+    # Subnet public
+    subnet_id = aws_subnet.prod-subnet-public-1.id
+    # Security Group
+    vpc_security_group_ids = [aws_security_group.security_group.id]
+    # availability_zone = var.availability_zone
+    # the Public SSH key
+    key_name = aws_key_pair.key-pair.id
+    # nginx installation
+    provisioner "file" {
+      source = "./source/nginx.sh"
+      destination = "/home/${var.ec2_user}/nginx.sh"
+    }
+    provisioner "remote-exec" {
+      inline = [
+        "chmod +x /home/${var.ec2_user}/nginx.sh",
+        "sudo /home/${var.ec2_user}/nginx.sh"
+      ]
+    }
+    connection {
+      user = var.ec2_user
+      private_key = file("./${var.PRIVATE_KEY_PATH}")
+    }
+}
+
+resource "aws_key_pair" "key-pair" {
+  key_name = " aws-infrastructure-key"
+  public_key = file(var.PUBLIC_KEY_PATH)
+}
