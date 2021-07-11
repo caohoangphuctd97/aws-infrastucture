@@ -65,6 +65,11 @@ resource "aws_route_table" "prod-public-crt" {
     tags = merge({"Name": "aws-infrastructure-RT"},var.tags)
 }
 
+resource "aws_route_table_association" "prod-crta-public-subnet-1"{
+  subnet_id = aws_subnet.prod-subnet-public-1.id
+  route_table_id = aws_route_table.prod-public-crt.id
+}
+
 data "aws_ami_ids" "amazon_linux_2" {
   owners = ["amazon"]
 
