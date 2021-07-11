@@ -51,3 +51,12 @@ resource "aws_internet_gateway" "prod-igw" {
   vpc_id = aws_vpc.prod-vpc.id
   tags = var.tags
 }
+
+data "aws_ami_ids" "amazon_linux_2" {
+  owners = ["amazon"]
+
+  filter {
+    name   = "image-ids"
+    values = ["ami-0e5182fad1edfaa68"]
+  }
+}
