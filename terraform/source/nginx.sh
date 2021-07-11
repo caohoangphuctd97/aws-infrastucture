@@ -10,4 +10,5 @@ yum -y update
 yum -y install nginx
 
 # make sure nginx is started
-service nginx start
+systemctl start nginx.service
+systemctl status nginx.service
