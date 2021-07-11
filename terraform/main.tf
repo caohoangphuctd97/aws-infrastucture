@@ -95,17 +95,8 @@ resource "aws_security_group" "security_group" {
     tags = merge({"Name": "aws-infrastructure-sg"},var.tags)
 }
 
-data "aws_ami_ids" "amazon_linux_2" {
-  owners = ["amazon"]
-
-  filter {
-    name   = "image-id"
-    values = ["ami-0e5182fad1edfaa68"]
-  }
-}
-
 resource "aws_instance" "web1" {
-    ami = data.aws_ami_ids.amazon_linux_2.id
+    ami = "ami-0e5182fad1edfaa68"
     instance_type = "t2.micro"
     # Subnet public
     subnet_id = aws_subnet.prod-subnet-public-1.id
