@@ -9,7 +9,7 @@ enable_classiclink = "false"
 instance_tenancy = "default"
 
 tags = {
-    Name = "aws-infrastructure-vpc"
+    Name_project = "aws-infrastructure"
     Created_by = "PhucCao"
 }
 

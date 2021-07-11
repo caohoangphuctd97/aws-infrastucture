@@ -52,6 +52,19 @@ resource "aws_internet_gateway" "prod-igw" {
   tags = var.tags
 }
 
+resource "aws_route_table" "prod-public-crt" {
+    vpc_id = "${aws_vpc.prod-vpc.id}"
+    
+    route {
+        //associated subnet can reach everywhere
+        cidr_block = "0.0.0.0/0" 
+        //CRT uses this IGW to reach internet
+        gateway_id = "${aws_internet_gateway.prod-igw.id}" 
+    }
+    
+    tags = var.tags
+}
+
 data "aws_ami_ids" "amazon_linux_2" {
   owners = ["amazon"]
 
@@ -60,3 +73,4 @@ data "aws_ami_ids" "amazon_linux_2" {
     values = ["ami-0e5182fad1edfaa68"]
   }
 }
+
