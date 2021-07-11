@@ -47,7 +47,7 @@ resource "aws_subnet" "prod-subnet-public-1" {
   tags = var.tags
 }
 
-resource "aws_vpn_gateway" "vpn_gw" {
+resource "aws_internet_gateway" "prod-igw" {
   vpc_id = aws_vpc.prod-vpc.id
   tags = var.tags
 }
