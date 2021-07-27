@@ -102,7 +102,6 @@ resource "aws_instance" "web1" {
     subnet_id = aws_subnet.prod-subnet-public-1.id
     # Security Group
     vpc_security_group_ids = [aws_security_group.security_group.id]
-    # availability_zone = var.availability_zone
     # the Public SSH key
     key_name = aws_key_pair.key-pair.id
     # nginx installation
@@ -121,9 +120,25 @@ resource "aws_instance" "web1" {
       user = var.ec2_user
       private_key = file("./${var.PRIVATE_KEY_PATH}")
     }
+    tags = merge({"Name": "aws-infrastructure-ec2"},var.tags)
 }
 
 resource "aws_key_pair" "key-pair" {
   key_name = "aws-infrastructure-key"
   public_key = file(var.PUBLIC_KEY_PATH)
+}
+
+# IoT Core
+resource "aws_iot_thing" "example" {
+  name = "demoIoT"
+}
+
+resource "aws_iot_certificate" "cert" {
+  csr    = file("./${var.cert}")
+  active = true
+}
+
+resource "aws_iot_thing_principal_attachment" "att" {
+  principal = aws_iot_certificate.cert.arn
+  thing     = aws_iot_thing.example.name
 }

@@ -60,3 +60,7 @@ variable PUBLIC_KEY_PATH {
 variable ec2_user {
     type = string
 }
+
+variable "cert" {
+    type = string
+}
