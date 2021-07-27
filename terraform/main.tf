@@ -134,7 +134,6 @@ resource "aws_iot_thing" "example" {
 }
 
 resource "aws_iot_certificate" "cert" {
-  csr    = file("./${var.cert}")
   active = true
 }
 
