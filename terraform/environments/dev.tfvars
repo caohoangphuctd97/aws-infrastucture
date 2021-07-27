@@ -23,4 +23,4 @@ PRIVATE_KEY_PATH = "asset/aws-infrastructure-key"
 ec2_user = "ec2-user"
 
 # Certificate IoT core
-cert = "asset/demoIoT.pem"
+cert = "asset/phuccao.pem"
