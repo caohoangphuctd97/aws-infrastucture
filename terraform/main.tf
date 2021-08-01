@@ -125,6 +125,7 @@ resource "aws_instance" "web1" {
 
 resource "aws_key_pair" "key-pair" {
   key_name = "aws-infrastructure-key"
+  
   public_key = file(var.PUBLIC_KEY_PATH)
 }
 
